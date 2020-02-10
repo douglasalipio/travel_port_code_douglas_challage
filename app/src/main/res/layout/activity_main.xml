@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.product.view.ProductActivity">
+        tools:context=".feature.weather.view.WeatherActivity">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productList"

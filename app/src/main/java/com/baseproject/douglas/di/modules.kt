@@ -3,13 +3,13 @@ package com.baseproject.douglas.di
 import android.app.Application
 import com.baseproject.douglas.data.AppDataSource
 import com.baseproject.douglas.data.AppRepository
-import com.baseproject.douglas.data.feature.product.ProductDtoMapper
-import com.baseproject.douglas.data.feature.productDetail.ProductDetailDtoMapper
+import com.baseproject.douglas.data.feature.city.ProductDtoMapper
+import com.baseproject.douglas.data.feature.weather.ProductDetailDtoMapper
 import com.baseproject.douglas.data.remote.ApiHelper
 import com.baseproject.douglas.data.remote.RemoteDataSource
 import com.baseproject.douglas.data.remote.ServiceAppFactory
-import com.baseproject.douglas.feature.product.view.ProductActivity
-import com.baseproject.douglas.feature.product.ProductModule
+import com.baseproject.douglas.feature.weather.view.WeatherActivity
+import com.baseproject.douglas.feature.weather.WeatherModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -19,8 +19,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [ProductModule::class])
-    abstract fun productAcitivity(): ProductActivity
+    @ContributesAndroidInjector(modules = [WeatherModule::class])
+    abstract fun productAcitivity(): WeatherActivity
 }
 
 @Module

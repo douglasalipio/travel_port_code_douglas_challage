@@ -1,7 +1,7 @@
 package com.baseproject.douglas.data
 
-import com.baseproject.douglas.data.feature.product.ProductDto
-import com.baseproject.douglas.data.feature.productDetail.ProductDetailDto
+import com.baseproject.douglas.data.feature.city.ProductDto
+import com.baseproject.douglas.data.feature.weather.ProductDetailDto
 import io.reactivex.Flowable
 
 

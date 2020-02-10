@@ -1,26 +1,26 @@
-package com.baseproject.douglas.feature.product
+package com.baseproject.douglas.feature.weather
 
 
 import com.baseproject.douglas.di.ActivityScoped
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.data.ProductDetail
-import com.baseproject.douglas.feature.product.extensions.mapToProductGroup
-import com.baseproject.douglas.feature.product.view.ProductHeader
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
+import com.baseproject.douglas.feature.weather.extensions.mapToProductGroup
+import com.baseproject.douglas.feature.weather.view.WeatherHeader
 import com.xwray.groupie.Section
 import javax.inject.Inject
 
 @ActivityScoped
-class ProductPresenter @Inject constructor(private val interactor: ProductContract.Interactor) :
-    ProductContract.Presenter {
+class WeatherPresenter @Inject constructor(private val interactor: WeatherContract.Interactor) :
+    WeatherContract.Presenter {
 
-    private var view: ProductContract.View? = null
+    private var view: WeatherContract.View? = null
 
     override fun <T> takeView(view: T) {
-        this.view = view as ProductContract.View
+        this.view = view as WeatherContract.View
     }
 
     override fun loadData() {
-        interactor.requestProducts(object : ProductInteractor.GetProductCallback {
+        interactor.requestProducts(object : WeatherInteractor.GetProductCallback {
 
             override fun onProductLoaded(data: Product) {
                 calculateTotalOfProducts(data)
@@ -33,9 +33,9 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
     }
 
     override fun loadProductDetail(productId: String) {
-        interactor.requestProductDetail(object : ProductInteractor.GetProductDetailCallback {
+        interactor.requestProductDetail(object : WeatherInteractor.GetProductDetailCallback {
 
-            override fun onProductDetailLoaded(data: List<ProductDetail>) {
+            override fun onProductDetailLoaded(data: List<WeatherDetail>) {
                 view?.showProductDetail(data.first { it.id == productId })
             }
 
@@ -52,7 +52,7 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
 
     override fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit) {
         data.categories.forEach { category ->
-            val section = Section(ProductHeader(category.tag))
+            val section = Section(WeatherHeader(category.tag))
             val group = category.subItems.mapToProductGroup(clickProductDetail)
             section.add(group)
             view?.showProducts(section)

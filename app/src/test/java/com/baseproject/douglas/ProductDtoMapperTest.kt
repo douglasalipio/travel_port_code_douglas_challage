@@ -1,6 +1,6 @@
 package com.baseproject.douglas
 
-import com.baseproject.douglas.data.feature.product.ProductDtoMapper
+import com.baseproject.douglas.data.feature.city.ProductDtoMapper
 import org.hamcrest.CoreMatchers.hasItem
 import org.junit.Assert.assertThat
 import org.junit.Test

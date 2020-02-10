@@ -1,12 +1,12 @@
-package com.baseproject.douglas.feature.product.view
+package com.baseproject.douglas.feature.weather.view
 
 import android.os.Bundle
 import android.util.Log
 import com.baseproject.douglas.R
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.ProductContract
-import com.baseproject.douglas.feature.product.data.ProductDetail
-import com.baseproject.douglas.feature.product.extensions.showProductDetailDialog
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.WeatherContract
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
+import com.baseproject.douglas.feature.weather.extensions.showProductDetailDialog
 import com.baseproject.douglas.util.initGridLayout
 
 
@@ -18,11 +18,11 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class ProductActivity : DaggerAppCompatActivity(),
-    ProductContract.View {
+class WeatherActivity : DaggerAppCompatActivity(),
+    WeatherContract.View {
 
     @Inject
-    internal lateinit var presenter: ProductContract.Presenter
+    internal lateinit var presenter: WeatherContract.Presenter
     private val adapter = GroupAdapter<GroupieViewHolder>()
     private val clickProductDetail: (String) -> Unit = this::onProductDetailClicked
 
@@ -39,8 +39,8 @@ class ProductActivity : DaggerAppCompatActivity(),
         presenter.mapProductItems(product, clickProductDetail)
     }
 
-    override fun showProductDetail(productDetail: ProductDetail) {
-        showProductDetailDialog(productDetail)
+    override fun showProductDetail(weatherDetail: WeatherDetail) {
+        showProductDetailDialog(weatherDetail)
     }
 
     override fun showProducts(section: Section) = adapter.add(section)

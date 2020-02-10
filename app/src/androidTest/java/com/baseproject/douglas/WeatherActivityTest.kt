@@ -12,7 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.baseproject.douglas.feature.product.view.ProductActivity
+import com.baseproject.douglas.feature.weather.view.WeatherActivity
 import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
@@ -21,12 +21,12 @@ import org.mockito.AdditionalMatchers.not
 
 
 @RunWith(AndroidJUnit4::class)
-class ProductActivityTest {
+class WeatherActivityTest {
 
     @Rule
     @JvmField
     var productActivityTestRule =
-        ActivityTestRule(ProductActivity::class.java, true, true)
+        ActivityTestRule(WeatherActivity::class.java, true, true)
 
     @Test
     fun shouldClickItemInRecyclerView() {

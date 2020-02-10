@@ -1,13 +1,13 @@
-package com.baseproject.douglas.data.feature.productDetail
+package com.baseproject.douglas.data.feature.weather
 
-import com.baseproject.douglas.feature.product.data.ProductDetail
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
 import com.baseproject.douglas.util.Mapper
 
 
-class ProductDetailDtoMapper : Mapper<List<ProductDetailDto>, List<ProductDetail>> {
+class ProductDetailDtoMapper : Mapper<List<ProductDetailDto>, List<WeatherDetail>> {
 
     override fun map(from: List<ProductDetailDto>) = from.map {
-        ProductDetail(
+        WeatherDetail(
             id = it.id,
             price = it.price,
             title = it.title,

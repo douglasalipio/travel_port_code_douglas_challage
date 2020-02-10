@@ -5,7 +5,7 @@ import androidx.test.espresso.NoActivityResumedException
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
-import com.baseproject.douglas.feature.product.view.ProductActivity
+import com.baseproject.douglas.feature.weather.view.WeatherActivity
 import org.junit.Assert.assertTrue
 
 import org.junit.Assert.fail
@@ -20,7 +20,7 @@ class NavigationAppTest {
 
     @Rule
     @JvmField
-    var activityTestRule = ActivityTestRule(ProductActivity::class.java)
+    var activityTestRule = ActivityTestRule(WeatherActivity::class.java)
 
     @Test
     fun pressBackExitApp() {

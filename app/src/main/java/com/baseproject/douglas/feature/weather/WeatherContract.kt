@@ -1,20 +1,20 @@
-package com.baseproject.douglas.feature.product
+package com.baseproject.douglas.feature.weather
 
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.data.ProductDetail
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
 import com.baseproject.douglas.foundation.BasePresenter
 import com.baseproject.douglas.foundation.BaseView
 import com.baseproject.douglas.foundation.BaseInteractor
 import com.xwray.groupie.Section
 
-interface ProductContract {
+interface WeatherContract {
 
     interface View : BaseView<Presenter> {
 
         fun showProducts(section: Section)
         fun showDataError()
         fun setUpGridList(totalItems: Int, product: Product)
-        fun showProductDetail(productDetail: ProductDetail)
+        fun showProductDetail(weatherDetail: WeatherDetail)
     }
 
     interface Presenter : BasePresenter {
@@ -25,10 +25,10 @@ interface ProductContract {
 
     interface Interactor : BaseInteractor {
         fun requestProductDetail(
-            getProductDetailCallback: ProductInteractor.GetProductDetailCallback,
+            getWeatherDetailCallback: WeatherInteractor.GetProductDetailCallback,
             productId: String
         )
 
-        fun requestProducts(getProductCallback: ProductInteractor.GetProductCallback)
+        fun requestProducts(getWeatherCallback: WeatherInteractor.GetProductCallback)
     }
 }

@@ -1,4 +1,4 @@
-package com.baseproject.douglas.data.feature.productDetail
+package com.baseproject.douglas.data.feature.weather
 
 import com.google.gson.annotations.SerializedName
 

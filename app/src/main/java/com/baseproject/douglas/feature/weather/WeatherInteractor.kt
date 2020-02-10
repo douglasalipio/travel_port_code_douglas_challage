@@ -1,22 +1,22 @@
-package com.baseproject.douglas.feature.product
+package com.baseproject.douglas.feature.weather
 
 
 import com.baseproject.douglas.data.AppDataSource
-import com.baseproject.douglas.data.feature.product.ProductDtoMapper
-import com.baseproject.douglas.data.feature.productDetail.ProductDetailDtoMapper
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.data.ProductDetail
+import com.baseproject.douglas.data.feature.city.ProductDtoMapper
+import com.baseproject.douglas.data.feature.weather.ProductDetailDtoMapper
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
 import com.baseproject.douglas.util.io
 import com.baseproject.douglas.util.ui
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class ProductInteractor @Inject constructor(
+class WeatherInteractor @Inject constructor(
     private val appRepository: AppDataSource,
     private val productMapper: ProductDtoMapper,
     private val productDetailMapper: ProductDetailDtoMapper
 ) :
-    ProductContract.Interactor {
+    WeatherContract.Interactor {
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -56,7 +56,7 @@ class ProductInteractor @Inject constructor(
 
     interface GetProductDetailCallback {
 
-        fun onProductDetailLoaded(data: List<ProductDetail>)
+        fun onProductDetailLoaded(data: List<WeatherDetail>)
 
         fun onDataNotAvailable(strError: String)
     }

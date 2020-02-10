@@ -1,13 +1,13 @@
 package com.baseproject.douglas
 
-import com.baseproject.douglas.data.feature.product.Cluster
-import com.baseproject.douglas.data.feature.product.Item
-import com.baseproject.douglas.data.feature.product.ProductDto
-import com.baseproject.douglas.data.feature.productDetail.ProductDetailDto
-import com.baseproject.douglas.feature.product.data.Category
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.data.SubItem
-import com.baseproject.douglas.feature.product.data.ProductDetail
+import com.baseproject.douglas.data.feature.city.Cluster
+import com.baseproject.douglas.data.feature.city.Item
+import com.baseproject.douglas.data.feature.city.ProductDto
+import com.baseproject.douglas.data.feature.weather.ProductDetailDto
+import com.baseproject.douglas.feature.weather.data.Category
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.data.SubItem
+import com.baseproject.douglas.feature.weather.data.WeatherDetail
 
 
 fun mockProducts() =
@@ -49,7 +49,7 @@ fun mockItem() = listOf(
 )
 
 fun mockProductDetail() =
-    ProductDetail(
+    WeatherDetail(
         id = "10",
         price = "€20",
         title = "Bananas Pacovan",
@@ -59,7 +59,7 @@ fun mockProductDetail() =
     )
 
 fun mockProductDetails() = listOf(
-    ProductDetail(
+    WeatherDetail(
         id = "10",
         price = "€20",
         title = "Bananas Pacovan",

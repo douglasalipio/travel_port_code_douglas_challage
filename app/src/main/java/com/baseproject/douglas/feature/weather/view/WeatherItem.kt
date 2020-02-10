@@ -1,14 +1,14 @@
-package com.baseproject.douglas.feature.product.view
+package com.baseproject.douglas.feature.weather.view
 
 import com.baseproject.douglas.R
-import com.baseproject.douglas.feature.product.data.SubItem
+import com.baseproject.douglas.feature.weather.data.SubItem
 import com.bumptech.glide.Glide
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.product_item.view.*
 
 
-class ProductItem(
+class WeatherItem(
     private val subItem: SubItem,
     private val clickListener: (String) -> Unit
 ) : Item() {

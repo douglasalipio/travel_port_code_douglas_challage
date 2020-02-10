@@ -1,4 +1,4 @@
-package com.baseproject.douglas.feature.product.data
+package com.baseproject.douglas.feature.weather.data
 
 data class Product(val categories: List<Category>)
 

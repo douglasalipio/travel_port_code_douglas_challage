@@ -1,6 +1,6 @@
-package com.baseproject.douglas.feature.product.data
+package com.baseproject.douglas.feature.weather.data
 
-data class ProductDetail(
+data class WeatherDetail(
     var id: String,
     var price: String,
     var title: String,

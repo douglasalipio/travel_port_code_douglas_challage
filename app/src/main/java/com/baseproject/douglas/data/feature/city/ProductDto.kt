@@ -1,4 +1,4 @@
-package com.baseproject.douglas.data.feature.product
+package com.baseproject.douglas.data.feature.city
 
 import com.google.gson.annotations.SerializedName
 

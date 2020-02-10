@@ -1,11 +1,11 @@
 package com.baseproject.douglas
 
-import com.baseproject.douglas.data.feature.productDetail.ProductDetailDtoMapper
+import com.baseproject.douglas.data.feature.weather.ProductDetailDtoMapper
 import org.hamcrest.CoreMatchers.hasItem
 import org.junit.Assert.assertThat
 import org.junit.Test
 
-class ProductDetailMapperTest {
+class WeatherDetailMapperTest {
 
     private val mapper = ProductDetailDtoMapper()
 

@@ -1,8 +1,8 @@
-package com.baseproject.douglas.data.feature.product
+package com.baseproject.douglas.data.feature.city
 
-import com.baseproject.douglas.feature.product.data.Category
-import com.baseproject.douglas.feature.product.data.Product
-import com.baseproject.douglas.feature.product.data.SubItem
+import com.baseproject.douglas.feature.weather.data.Category
+import com.baseproject.douglas.feature.weather.data.Product
+import com.baseproject.douglas.feature.weather.data.SubItem
 import com.baseproject.douglas.util.Mapper
 
 

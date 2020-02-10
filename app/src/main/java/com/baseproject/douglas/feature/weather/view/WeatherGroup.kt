@@ -1,11 +1,11 @@
-package com.baseproject.douglas.feature.product.view
+package com.baseproject.douglas.feature.weather.view
 
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupDataObserver
 import com.xwray.groupie.Item
 
 
-class ProductGroup(private val items: List<Item<*>>) : Group {
+class WeatherGroup(private val items: List<Item<*>>) : Group {
 
     override fun getItemCount() = items.size
 
