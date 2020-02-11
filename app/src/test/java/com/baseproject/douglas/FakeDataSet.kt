@@ -3,7 +3,7 @@ package com.baseproject.douglas
 import com.baseproject.douglas.data.feature.city.Cluster
 import com.baseproject.douglas.data.feature.city.Item
 import com.baseproject.douglas.data.feature.city.ProductDto
-import com.baseproject.douglas.data.feature.weather.ProductDetailDto
+import com.baseproject.douglas.data.feature.weather.WeatherDto
 import com.baseproject.douglas.feature.weather.data.Category
 import com.baseproject.douglas.feature.weather.data.Product
 import com.baseproject.douglas.feature.weather.data.SubItem
@@ -69,7 +69,7 @@ fun mockProductDetails() = listOf(
     )
 )
 
-fun mockProductDetailDto() = ProductDetailDto(
+fun mockProductDetailDto() = WeatherDto(
     id = "10",
     price = "€20",
     title = "Bananas Pacovan",

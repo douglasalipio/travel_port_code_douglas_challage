@@ -4,7 +4,9 @@ import com.baseproject.douglas.data.AppDataSource
 
 class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
-    override fun requestProducts() = apiHelper.getData()
+    override fun requestWeatherBy(city: String) = apiHelper.getWeather(city)
 
-    override fun requestProductDetailById(productId: String)  = apiHelper.getProductDetail(productId)
+    override fun requestForecastBy(city: String) = apiHelper.getForecast(city)
+
+
 }

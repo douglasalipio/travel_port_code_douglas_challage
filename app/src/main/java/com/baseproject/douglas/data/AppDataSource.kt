@@ -1,13 +1,13 @@
 package com.baseproject.douglas.data
 
-import com.baseproject.douglas.data.feature.city.ProductDto
-import com.baseproject.douglas.data.feature.weather.ProductDetailDto
+import com.baseproject.douglas.data.feature.city.WeatherDto
+import com.baseproject.douglas.data.feature.weather.ForecastDto
 import io.reactivex.Flowable
 
 
 interface AppDataSource {
 
-    fun requestProducts(): Flowable<ProductDto>
+    fun requestWeatherBy(city: String): Flowable<WeatherDto>
 
-    fun requestProductDetailById(productId: String) : Flowable<List<ProductDetailDto>>
+    fun requestForecastBy(city: String): Flowable<ForecastDto>
 }

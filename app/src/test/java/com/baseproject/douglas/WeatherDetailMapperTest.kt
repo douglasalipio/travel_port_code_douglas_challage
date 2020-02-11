@@ -1,13 +1,12 @@
 package com.baseproject.douglas
 
-import com.baseproject.douglas.data.feature.weather.ProductDetailDtoMapper
 import org.hamcrest.CoreMatchers.hasItem
 import org.junit.Assert.assertThat
 import org.junit.Test
 
 class WeatherDetailMapperTest {
 
-    private val mapper = ProductDetailDtoMapper()
+    private val mapper = WeatherDtoMapper()
 
     @Test
     fun `should map section model to section`() {
