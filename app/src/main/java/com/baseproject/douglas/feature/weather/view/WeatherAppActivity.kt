@@ -4,23 +4,29 @@ import android.os.Bundle
 import android.util.Log
 import com.baseproject.douglas.R
 import com.baseproject.douglas.feature.weather.WeatherContract
+import com.baseproject.douglas.util.initGridLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class WeatherAppActivity : DaggerAppCompatActivity(), WeatherContract.View {
     @Inject
     internal lateinit var presenter: WeatherContract.Presenter
     private val adapter = GroupAdapter<GroupieViewHolder>()
-    // private val clickProductDetail: (String) -> Unit = this::onProductDetailClicked
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initComponents()
         presenter.takeView(this)
         presenter.loadData()
+    }
+
+    private fun initComponents() {
+        weatherList.initGridLayout(this, adapter)
     }
 
 //    override fun setUpGridList(totalItems: Int, product: Product) {
@@ -33,7 +39,9 @@ class WeatherAppActivity : DaggerAppCompatActivity(), WeatherContract.View {
 //        // showProductDetailDialog(weatherDetail)
 //    }
 
-    override fun showProducts(section: Section) = adapter.add(section)
+    override fun showProducts(section: Section) {
+        adapter.add(section)
+    }
 
     //  private fun onProductDetailClicked(productId: String) = presenter.loadProductDetail(productId)
 

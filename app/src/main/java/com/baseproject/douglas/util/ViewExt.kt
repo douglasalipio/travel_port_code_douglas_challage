@@ -9,12 +9,10 @@ import com.xwray.groupie.GroupieViewHolder
 
 fun RecyclerView.initGridLayout(
     context: Context,
-    groupAdapter: GroupAdapter<GroupieViewHolder>,
-    numberColumn: Int
+    groupAdapter: GroupAdapter<GroupieViewHolder>
 ) {
 
     val gridLayoutManager = LinearLayoutManager(context)
-    //gridLayoutManager.spanSizeLookup = groupAdapter.spanSizeLookup
     this.adapter = groupAdapter
     this.layoutManager = gridLayoutManager
 }
