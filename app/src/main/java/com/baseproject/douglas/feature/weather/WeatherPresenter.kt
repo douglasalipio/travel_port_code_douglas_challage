@@ -2,11 +2,12 @@ package com.baseproject.douglas.feature.weather
 
 
 import com.baseproject.douglas.di.ActivityScoped
-import com.baseproject.douglas.feature.weather.data.Product
-import com.baseproject.douglas.feature.weather.data.WeatherDetail
-import com.baseproject.douglas.feature.weather.extensions.mapToProductGroup
-import com.baseproject.douglas.feature.weather.view.WeatherHeader
+import com.baseproject.douglas.feature.weather.data.WeatherInfo
 import com.xwray.groupie.Section
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityScoped
@@ -20,44 +21,39 @@ class WeatherPresenter @Inject constructor(private val interactor: WeatherContra
     }
 
     override fun loadData() {
-        interactor.requestProducts(object : WeatherInteractor.GetProductCallback {
+        GlobalScope.launch(Dispatchers.Main) {
+            interactor.requestWeather(object : WeatherInteractor.GetWeatherInfoCallback {
 
-            override fun onProductLoaded(data: Product) {
-                calculateTotalOfProducts(data)
-            }
+//            override fun onWeatherInfoLoaded(data: WeatherDetail) {
+//                calculateTotalOfProducts(data)
+//            }
 
-            override fun onDataNotAvailable(strError: String) {
-                view?.showDataError()
-            }
-        })
-    }
+                override fun onWeatherInfoLoaded(data: WeatherInfo) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
 
-    override fun loadProductDetail(productId: String) {
-        interactor.requestProductDetail(object : WeatherInteractor.GetProductDetailCallback {
 
-            override fun onProductDetailLoaded(data: List<WeatherDetail>) {
-                view?.showProductDetail(data.first { it.id == productId })
-            }
-
-            override fun onDataNotAvailable(strError: String) {
-                view?.showDataError()
-            }
-        }, productId)
-    }
-
-    private fun calculateTotalOfProducts(data: Product) {
-        val totalItems = data.categories.map { it.subItems.size }.sum()
-        view?.setUpGridList(totalItems, data)
-    }
-
-    override fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit) {
-        data.categories.forEach { category ->
-            val section = Section(WeatherHeader(category.tag))
-            val group = category.subItems.mapToProductGroup(clickProductDetail)
-            section.add(group)
-            view?.showProducts(section)
+                override fun onDataNotAvailable(strError: String) {
+                    view?.showDataError()
+                }
+            }, "Dublin")
         }
     }
+
+
+//    private fun calculateTotalOfProducts(data: Product) {
+//        val totalItems = data.categories.map { it.subItems.size }.sum()
+//        view?.setUpGridList(totalItems, data)
+//    }
+
+//    override fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit) {
+//        data.categories.forEach { category ->
+//            val section = Section(WeatherHeader(category.tag))
+//            val group = category.subItems.mapToProductGroup(clickProductDetail)
+//            section.add(group)
+//            view?.showProducts(section)
+//        }
+//    }
 
     override fun dropView() {
         view = null

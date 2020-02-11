@@ -1,13 +1,11 @@
 package com.baseproject.douglas.data
 
-import com.baseproject.douglas.data.feature.city.WeatherDto
-import com.baseproject.douglas.data.feature.weather.ForecastDto
-import io.reactivex.Flowable
-
+import com.baseproject.douglas.data.feature.weather.WeatherDto
+import com.baseproject.douglas.data.feature.forecast.ForecastDto
 
 interface AppDataSource {
 
-    fun requestWeatherBy(city: String): Flowable<WeatherDto>
+    suspend fun requestWeatherBy(city: String): WeatherDto
 
-    fun requestForecastBy(city: String): Flowable<ForecastDto>
+    suspend fun requestForecastBy(city: String): ForecastDto
 }

@@ -1,63 +1,44 @@
 package com.baseproject.douglas.feature.weather
 
 
+import android.util.Log
 import com.baseproject.douglas.data.AppDataSource
-import com.baseproject.douglas.feature.weather.data.Product
-import com.baseproject.douglas.feature.weather.data.WeatherDetail
-import com.baseproject.douglas.util.io
-import com.baseproject.douglas.util.ui
+import com.baseproject.douglas.data.feature.forecast.ForecastDtoMapper
+import com.baseproject.douglas.data.feature.weather.WeatherDtoMapper
+import com.baseproject.douglas.feature.weather.data.WeatherInfo
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class WeatherInteractor @Inject constructor(
     private val appRepository: AppDataSource,
-    private val cityMapper: CityDtoMapper,
+    private val forecastMapper: ForecastDtoMapper,
     private val weatherMapper: WeatherDtoMapper
 ) :
     WeatherContract.Interactor {
 
     private val compositeDisposable = CompositeDisposable()
 
-    override fun requestProducts(getProductCallback: GetProductCallback) {
-        compositeDisposable.add(
-            appRepository.requestWeatherBy()
-                .subscribeOn(io())
-                .observeOn(ui())
-                .doOnError { getProductCallback.onDataNotAvailable(it.message.orEmpty()) }
-                .subscribe { getProductCallback.onProductLoaded(cityMapper.map(it)) }
-        )
-    }
-
-    override fun requestProductDetail(
-        getProductDetailCallback: GetProductDetailCallback,
-        productId: String
+    override suspend fun requestWeather(
+        getWeatherDetailCallback: GetWeatherInfoCallback,
+        city: String
     ) {
-        compositeDisposable.add(
-            appRepository.requestForecastBy(productId)
-                .subscribeOn(io())
-                .observeOn(ui())
-                .doOnError { getProductDetailCallback.onDataNotAvailable(it.message.orEmpty()) }
-                .subscribe {
-                    getProductDetailCallback.onProductDetailLoaded(weatherMapper.map(it))
-                }
-        )
+        withContext(Dispatchers.IO) {
+            val weather = appRepository.requestWeatherBy(city)
+            val forecast = appRepository.requestForecastBy(city)
+            Log.e("test", weather.toString())
+            Log.e("test", forecast.toString())
+        }
     }
 
     override fun dispose() = compositeDisposable.dispose()
 
-    interface GetProductCallback {
+    interface GetWeatherInfoCallback {
 
-        fun onProductLoaded(data: Product)
-
-        fun onDataNotAvailable(strError: String)
-    }
-
-    interface GetProductDetailCallback {
-
-        fun onProductDetailLoaded(data: List<WeatherDetail>)
+        fun onWeatherInfoLoaded(data: WeatherInfo)
 
         fun onDataNotAvailable(strError: String)
     }
-
 }
 

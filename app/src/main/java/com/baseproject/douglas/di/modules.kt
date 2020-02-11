@@ -3,11 +3,13 @@ package com.baseproject.douglas.di
 import android.app.Application
 import com.baseproject.douglas.data.AppDataSource
 import com.baseproject.douglas.data.AppRepository
+import com.baseproject.douglas.data.feature.forecast.ForecastDtoMapper
+import com.baseproject.douglas.data.feature.weather.WeatherDtoMapper
 import com.baseproject.douglas.data.remote.ApiHelper
 import com.baseproject.douglas.data.remote.RemoteDataSource
 import com.baseproject.douglas.data.remote.ServiceAppFactory
-import com.baseproject.douglas.feature.weather.view.WeatherActivity
 import com.baseproject.douglas.feature.weather.WeatherModule
+import com.baseproject.douglas.feature.weather.view.WeatherAppActivity
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -18,7 +20,7 @@ abstract class ActivityModule {
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = [WeatherModule::class])
-    abstract fun productAcitivity(): WeatherActivity
+    abstract fun productAcitivity(): WeatherAppActivity
 }
 
 @Module
@@ -43,11 +45,11 @@ class RepositoryModule {
 class MapperModule {
     @Provides
     @Reusable
-    internal fun provideProductMapper() = CityDtoMapper()
+    internal fun provideForecastMapper() = ForecastDtoMapper()
 
     @Provides
     @Reusable
-    internal fun provideProductDetailMapper() = WeatherDtoMapper()
+    internal fun provideWeatherMapper() = WeatherDtoMapper()
 }
 
 @Module

@@ -1,9 +1,9 @@
 package com.baseproject.douglas
 
-import com.baseproject.douglas.data.feature.city.Cluster
-import com.baseproject.douglas.data.feature.city.Item
-import com.baseproject.douglas.data.feature.city.ProductDto
-import com.baseproject.douglas.data.feature.weather.WeatherDto
+import com.baseproject.douglas.data.feature.weather.Cluster
+import com.baseproject.douglas.data.feature.weather.Item
+import com.baseproject.douglas.data.feature.weather.ProductDto
+import com.baseproject.douglas.data.feature.forecast.WeatherDto
 import com.baseproject.douglas.feature.weather.data.Category
 import com.baseproject.douglas.feature.weather.data.Product
 import com.baseproject.douglas.feature.weather.data.SubItem
