@@ -1,6 +1,5 @@
 package com.baseproject.douglas.feature.weather
 
-import com.baseproject.douglas.feature.weather.data.WeatherDetail
 import com.baseproject.douglas.foundation.BasePresenter
 import com.baseproject.douglas.foundation.BaseView
 import com.baseproject.douglas.foundation.BaseInteractor
@@ -13,7 +12,7 @@ interface WeatherContract {
         fun showProducts(section: Section)
         fun showDataError()
         //fun setUpGridList(totalItems: Int, product: Product)
-        fun showProductDetail(weatherDetail: WeatherDetail)
+       // fun showProductDetail(weatherDetail: WeatherDetail)
     }
 
     interface Presenter : BasePresenter {

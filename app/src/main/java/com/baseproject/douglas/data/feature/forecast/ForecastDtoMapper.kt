@@ -11,10 +11,10 @@ class ForecastDtoMapper : Mapper<ForecastDto, ForecastInfo> {
         from.list.forEach {
             forecastList.add(
                 ForecastInfo(
-                    icon = it.weather.last().icon,
+                    iconUrl = "http://openweathermap.org/img/wn/${it.weather.last().icon}@2x.png",
                     description = it.weather.last().description,
                     date = it.dt.toString(),
-                    humidity = it.main.humidity.toString(),
+                    feelsLike = it.main.feelsLike.toString(),
                     temperature = it.main.temp.toString()
                 )
             )

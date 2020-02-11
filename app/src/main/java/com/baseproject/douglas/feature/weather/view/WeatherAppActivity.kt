@@ -1,11 +1,9 @@
 package com.baseproject.douglas.feature.weather.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.baseproject.douglas.R
 import com.baseproject.douglas.feature.weather.WeatherContract
-import com.baseproject.douglas.feature.weather.data.WeatherDetail
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -31,9 +29,9 @@ class WeatherAppActivity : DaggerAppCompatActivity(), WeatherContract.View {
 //        presenter.mapProductItems(product, clickProductDetail)
 //    }
 
-    override fun showProductDetail(weatherDetail: WeatherDetail) {
-        // showProductDetailDialog(weatherDetail)
-    }
+//    override fun showProductDetail(weatherDetail: WeatherDetail) {
+//        // showProductDetailDialog(weatherDetail)
+//    }
 
     override fun showProducts(section: Section) = adapter.add(section)
 

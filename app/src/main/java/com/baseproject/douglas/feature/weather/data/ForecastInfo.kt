@@ -1,9 +1,9 @@
 package com.baseproject.douglas.feature.weather.data
 
 class ForecastInfo(
-    private val icon: String,
-    private val temperature: String,
-    private val humidity: String,
-    private val date: String,
-    private val description: String
+    val iconUrl: String,
+    val temperature: String,
+    val feelsLike: String,
+    val date: String,
+    val description: String
 )

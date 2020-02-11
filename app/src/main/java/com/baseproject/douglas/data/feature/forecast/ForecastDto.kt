@@ -21,9 +21,7 @@ data class Main(
     @SerializedName("temp")
     var temp: Float,
     @SerializedName("feels_like")
-    var feelsLike: Float,
-    @SerializedName("humidity")
-    var humidity: Int
+    var feelsLike: Float
 )
 
 data class Weather(

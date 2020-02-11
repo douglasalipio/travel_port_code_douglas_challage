@@ -4,21 +4,15 @@ import com.baseproject.douglas.data.feature.forecast.ForecastDto
 import com.google.gson.annotations.SerializedName
 
 data class WeatherDto(
-    @SerializedName("clusters")
+    @SerializedName("name")
     val name: String,
-    val forecastDtoDetail: kotlin.collections.List<ForecastDto>,
-    @SerializedName("list")
-    val list: kotlin.collections.List<List>
+    val forecastDtoDetail: List<ForecastDto>,
+    @SerializedName("main")
+    val main: Main,
+    @SerializedName("dt")
+    val date :  String
 )
 
-data class List(
-    @SerializedName("dt")
-    var dt: Int,
-    @SerializedName("main")
-    var main: Main,
-    @SerializedName("weather")
-    var weather: kotlin.collections.List<Weather>?
-)
 
 data class Main(
     @SerializedName("temp")
@@ -27,11 +21,4 @@ data class Main(
     var feelsLike: Float,
     @SerializedName("humidity")
     var humidity: Int
-)
-
-data class Weather(
-    @SerializedName("description")
-    var description: String,
-    @SerializedName("icon")
-    var icon: String
 )

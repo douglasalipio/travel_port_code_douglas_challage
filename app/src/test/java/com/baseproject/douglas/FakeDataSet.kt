@@ -7,7 +7,6 @@ import com.baseproject.douglas.data.feature.forecast.WeatherDto
 import com.baseproject.douglas.feature.weather.data.Category
 import com.baseproject.douglas.feature.weather.data.Product
 import com.baseproject.douglas.feature.weather.data.SubItem
-import com.baseproject.douglas.feature.weather.data.WeatherDetail
 
 
 fun mockProducts() =

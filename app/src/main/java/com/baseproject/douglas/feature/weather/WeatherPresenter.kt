@@ -1,6 +1,7 @@
 package com.baseproject.douglas.feature.weather
 
 
+import android.util.Log
 import com.baseproject.douglas.di.ActivityScoped
 import com.baseproject.douglas.feature.weather.data.WeatherInfo
 import com.xwray.groupie.Section
@@ -24,14 +25,9 @@ class WeatherPresenter @Inject constructor(private val interactor: WeatherContra
         GlobalScope.launch(Dispatchers.Main) {
             interactor.requestWeather(object : WeatherInteractor.GetWeatherInfoCallback {
 
-//            override fun onWeatherInfoLoaded(data: WeatherDetail) {
-//                calculateTotalOfProducts(data)
-//            }
-
                 override fun onWeatherInfoLoaded(data: WeatherInfo) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    Log.e("test", "")
                 }
-
 
                 override fun onDataNotAvailable(strError: String) {
                     view?.showDataError()
@@ -39,21 +35,6 @@ class WeatherPresenter @Inject constructor(private val interactor: WeatherContra
             }, "Dublin")
         }
     }
-
-
-//    private fun calculateTotalOfProducts(data: Product) {
-//        val totalItems = data.categories.map { it.subItems.size }.sum()
-//        view?.setUpGridList(totalItems, data)
-//    }
-
-//    override fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit) {
-//        data.categories.forEach { category ->
-//            val section = Section(WeatherHeader(category.tag))
-//            val group = category.subItems.mapToProductGroup(clickProductDetail)
-//            section.add(group)
-//            view?.showProducts(section)
-//        }
-//    }
 
     override fun dropView() {
         view = null
