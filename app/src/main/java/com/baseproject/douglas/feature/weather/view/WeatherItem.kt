@@ -16,8 +16,8 @@ class WeatherItem(
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         with(viewHolder.itemView) {
             Glide.with(context).load(forecastInfo.iconUrl).into(weatherIcon)
-            date.text = forecastInfo.date
-            description.text = forecastInfo.description
+            dateLabel.text = forecastInfo.date
+            descriptionLabel.text = forecastInfo.description
             degreeLabel.text = forecastInfo.temperature
             realFeelingLabel.text = forecastInfo.feelsLike
         }
