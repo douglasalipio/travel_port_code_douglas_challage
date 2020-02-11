@@ -21,10 +21,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/weatherIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:layout_constraintEnd_toStartOf="@+id/degreeLabel"
+            app:layout_constraintTop_toTopOf="@+id/dateLabel"
             app:srcCompat="@drawable/weather_mock" />
 
         <TextView
@@ -32,8 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintStart_toStartOf="@id/weatherIcon"
-            app:layout_constraintTop_toBottomOf="@id/weatherIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Wednesday, 12 Fev" />
 
         <TextView
@@ -51,6 +51,7 @@
             android:id="@+id/realFeelingLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="3dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,6 +62,7 @@
             android:id="@+id/degreeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="3dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintBottom_toTopOf="@+id/realFeelingLabel"
             app:layout_constraintEnd_toEndOf="@+id/realFeelingLabel"

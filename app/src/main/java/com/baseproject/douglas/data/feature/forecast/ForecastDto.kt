@@ -10,7 +10,7 @@ data class ForecastDto(
 
 data class List(
     @SerializedName("dt")
-    var dt: Int,
+    var dt: Long,
     @SerializedName("main")
     var main: Main,
     @SerializedName("weather")

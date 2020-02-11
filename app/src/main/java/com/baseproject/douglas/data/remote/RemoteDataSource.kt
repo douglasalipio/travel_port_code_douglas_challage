@@ -8,5 +8,4 @@ class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
     override suspend fun requestForecastBy(city: String) = apiHelper.getForecast(city)
 
-
 }
