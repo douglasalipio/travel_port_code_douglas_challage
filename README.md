@@ -36,6 +36,10 @@ Extras
 The MPV design pattern has been implemented to make views reusable and to isolate business rules from the Presenter layer, which makes it easier to test.
 The application is divided into three layers, namely View, Presenter, and Data. In addition, there is an interactor responsible to fetch the weather forecast data.
 
+### How to test
+
+Try to test the app using a physical device to get a better experience. Sometimes the emulator doesn't work properly to connect a network.
+
 ### Installation
 
 - Android Studio 3.5
