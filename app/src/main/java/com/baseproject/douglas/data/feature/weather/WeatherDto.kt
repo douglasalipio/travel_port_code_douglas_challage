@@ -10,15 +10,22 @@ data class WeatherDto(
     @SerializedName("main")
     val main: Main,
     @SerializedName("dt")
-    val date :  String
+    val date: String,
+    @SerializedName("sys")
+    val countryInfo: Sys
 )
 
 
 data class Main(
     @SerializedName("temp")
-    var temp: Float,
+    val temp: Float,
     @SerializedName("feels_like")
-    var feelsLike: Float,
+    val feelsLike: Float,
     @SerializedName("humidity")
-    var humidity: Int
+    val humidity: Int
+)
+
+data class Sys(
+    @SerializedName("country")
+    val country: String
 )

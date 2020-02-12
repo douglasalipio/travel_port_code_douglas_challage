@@ -10,23 +10,25 @@ data class ForecastDto(
 
 data class List(
     @SerializedName("dt")
-    var dt: Long,
+    val timestamp: Long,
+    @SerializedName("dt_txt")
+    val dateUtcString: String,
     @SerializedName("main")
-    var main: Main,
+    val main: Main,
     @SerializedName("weather")
-    var weather: kotlin.collections.List<Weather>
+    val weather: kotlin.collections.List<Weather>
 )
 
 data class Main(
     @SerializedName("temp")
-    var temp: Float,
+    val temp: Float,
     @SerializedName("feels_like")
-    var feelsLike: Float
+    val feelsLike: Float
 )
 
 data class Weather(
     @SerializedName("description")
-    var description: String,
+    val description: String,
     @SerializedName("icon")
-    var icon: String
+    val icon: String
 )

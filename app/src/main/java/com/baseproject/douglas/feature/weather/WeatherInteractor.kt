@@ -26,7 +26,7 @@ class WeatherInteractor @Inject constructor(
             val weatherDto = withContext(Dispatchers.IO) { appRepository.requestWeatherBy(city) }
             val forecastDto = withContext(Dispatchers.IO) { appRepository.requestForecastBy(city) }
             val weather = weatherMapper.map(weatherDto)
-            weather.forecastList.addAll(forecastMapper.mapToList(forecastDto).toMutableList())
+            weather.forecastList.addAll(forecastMapper.mapToList(forecastDto))
             getWeatherDetailCallback.onWeatherInfoLoaded(weather)
         }
     }

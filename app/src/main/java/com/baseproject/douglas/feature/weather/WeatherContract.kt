@@ -11,14 +11,10 @@ interface WeatherContract {
 
         fun showProducts(section: Section)
         fun showDataError()
-        //fun setUpGridList(totalItems: Int, product: Product)
-       // fun showProductDetail(weatherDetail: WeatherDetail)
     }
 
     interface Presenter : BasePresenter {
-       fun loadData()
-        //fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit)
-        //fun loadProductDetail(productId: String)
+        fun loadData(city: String)
     }
 
     interface Interactor : BaseInteractor {

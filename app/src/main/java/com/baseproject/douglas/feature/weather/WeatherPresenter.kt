@@ -22,22 +22,26 @@ class WeatherPresenter @Inject constructor(private val interactor: WeatherContra
         this.view = view as WeatherContract.View
     }
 
-    override fun loadData() {
+    override fun loadData(city: String) {
         GlobalScope.launch(Dispatchers.Main) {
             interactor.requestWeather(object : WeatherInteractor.GetWeatherInfoCallback {
 
                 override fun onWeatherInfoLoaded(data: WeatherInfo) {
-                    Log.e("test", "")
-                    val section = Section(WeatherHeader(data.city))
-                    section.add(data.forecastList.mapToGroup())
+                    val section = Section(WeatherHeader("${data.city}, ${data.country}"))
+                    section.add(filterByNextFiveDays(data).forecastList.mapToGroup())
                     view?.showProducts(section)
                 }
 
                 override fun onDataNotAvailable(strError: String) {
                     view?.showDataError()
                 }
-            }, "Dublin")
+            }, city)
         }
+    }
+
+    private fun filterByNextFiveDays(weatherInfo: WeatherInfo): WeatherInfo {
+        weatherInfo.forecastList = weatherInfo.forecastList.distinctBy { it.date }.toMutableList()
+        return weatherInfo
     }
 
     private fun List<ForecastInfo>.mapToGroup(): WeatherGroup {

@@ -22,28 +22,18 @@ class WeatherAppActivity : DaggerAppCompatActivity(), WeatherContract.View {
         setContentView(R.layout.activity_main)
         initComponents()
         presenter.takeView(this)
-        presenter.loadData()
+        presenter.loadData("Limerick")
+        presenter.loadData("Recife")
+        presenter.loadData("Manaus")
     }
 
     private fun initComponents() {
         weatherList.initGridLayout(this, adapter)
     }
 
-//    override fun setUpGridList(totalItems: Int, product: Product) {
-//        //adapter.spanCount = totalItems
-//        productList.initGridLayout(this, adapter, adapter.spanCount)
-//        presenter.mapProductItems(product, clickProductDetail)
-//    }
-
-//    override fun showProductDetail(weatherDetail: WeatherDetail) {
-//        // showProductDetailDialog(weatherDetail)
-//    }
-
     override fun showProducts(section: Section) {
         adapter.add(section)
     }
-
-    //  private fun onProductDetailClicked(productId: String) = presenter.loadProductDetail(productId)
 
     override fun showDataError() {
         Log.e("test", "feature error.")

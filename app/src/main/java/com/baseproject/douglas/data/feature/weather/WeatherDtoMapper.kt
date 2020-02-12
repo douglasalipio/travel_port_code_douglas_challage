@@ -9,6 +9,7 @@ class WeatherDtoMapper : Mapper<WeatherDto, WeatherInfo> {
 
     override fun map(from: WeatherDto) = WeatherInfo(
         city = from.name,
+        country = from.countryInfo.country,
         humidity = from.main.humidity.toString(),
         feelsLike = from.main.feelsLike.toString(),
         tempeture = from.main.temp.toString()
