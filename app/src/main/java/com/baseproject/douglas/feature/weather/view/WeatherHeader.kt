@@ -3,7 +3,7 @@ package com.baseproject.douglas.feature.weather.view
 import com.baseproject.douglas.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.product_header.view.*
+import kotlinx.android.synthetic.main.weather_header.view.*
 
 class WeatherHeader(private val title: String) : Item() {
 
@@ -11,5 +11,5 @@ class WeatherHeader(private val title: String) : Item() {
         viewHolder.itemView.headerTitle.text = title
     }
 
-    override fun getLayout() = R.layout.product_header
+    override fun getLayout() = R.layout.weather_header
 }

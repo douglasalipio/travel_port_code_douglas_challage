@@ -7,7 +7,7 @@ import com.baseproject.douglas.feature.weather.data.ForecastInfo
 import com.bumptech.glide.Glide
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.product_item.view.*
+import kotlinx.android.synthetic.main.weather_item.view.*
 
 @SuppressLint("SetTextI18n")
 class WeatherItem(
@@ -25,5 +25,5 @@ class WeatherItem(
         }
     }
 
-    override fun getLayout() = R.layout.product_item
+    override fun getLayout() = R.layout.weather_item
 }

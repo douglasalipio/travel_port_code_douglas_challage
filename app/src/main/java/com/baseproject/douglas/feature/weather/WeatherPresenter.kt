@@ -1,7 +1,6 @@
 package com.baseproject.douglas.feature.weather
 
 
-import android.util.Log
 import com.baseproject.douglas.di.ActivityScoped
 import com.baseproject.douglas.feature.weather.data.ForecastInfo
 import com.baseproject.douglas.feature.weather.data.WeatherInfo
@@ -29,7 +28,7 @@ class WeatherPresenter @Inject constructor(private val interactor: WeatherContra
                 override fun onWeatherInfoLoaded(data: WeatherInfo) {
                     val section = Section(WeatherHeader("${data.city}, ${data.country}"))
                     section.add(filterByNextFiveDays(data).forecastList.mapToGroup())
-                    view?.showProducts(section)
+                    view?.showWeatherForecasts(section)
                 }
 
                 override fun onDataNotAvailable(strError: String) {

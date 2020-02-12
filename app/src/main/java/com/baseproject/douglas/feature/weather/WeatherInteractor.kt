@@ -23,11 +23,15 @@ class WeatherInteractor @Inject constructor(
         city: String
     ) {
         GlobalScope.launch(Dispatchers.Main) {
-            val weatherDto = withContext(Dispatchers.IO) { appRepository.requestWeatherBy(city) }
-            val forecastDto = withContext(Dispatchers.IO) { appRepository.requestForecastBy(city) }
-            val weather = weatherMapper.map(weatherDto)
-            weather.forecastList.addAll(forecastMapper.mapToList(forecastDto))
-            getWeatherDetailCallback.onWeatherInfoLoaded(weather)
+            try {
+                val weatherDto = withContext(Dispatchers.IO) { appRepository.requestWeatherBy(city) }
+                val forecastDto = withContext(Dispatchers.IO) { appRepository.requestForecastBy(city) }
+                val weather = weatherMapper.map(weatherDto)
+                weather.forecastList.addAll(forecastMapper.mapToList(forecastDto))
+                getWeatherDetailCallback.onWeatherInfoLoaded(weather)
+            } catch (exception: Exception) {
+                getWeatherDetailCallback.onDataNotAvailable("data not available.")
+            }
         }
     }
 

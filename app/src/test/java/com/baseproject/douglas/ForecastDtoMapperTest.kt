@@ -5,6 +5,8 @@ import com.baseproject.douglas.data.feature.weather.Sys
 import com.baseproject.douglas.data.feature.weather.WeatherDto
 import com.baseproject.douglas.data.feature.weather.WeatherDtoMapper
 import com.baseproject.douglas.feature.weather.data.WeatherInfo
+import mockWeatherDto
+import mockWeatherInfo
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -23,21 +25,5 @@ class WeatherDtoMapperTest {
         assertEquals(expectedWeatherInfo.city, mappingResult.city)
     }
 
-    private fun mockWeatherInfo() = WeatherInfo(
-        "city",
-        "country",
-        "40",
-        "20",
-        "25",
-        mutableListOf()
-    )
 
-    private fun mockWeatherDto() =
-        WeatherDto(
-            "city",
-            listOf(),
-            Main(1f, 2f, 2),
-            "11/11/2019",
-            Sys("country")
-        )
 }

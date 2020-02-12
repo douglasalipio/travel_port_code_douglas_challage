@@ -2,6 +2,7 @@ package com.baseproject.douglas.feature.weather.view
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.baseproject.douglas.R
 import com.baseproject.douglas.feature.weather.WeatherContract
 import com.baseproject.douglas.util.initGridLayout
@@ -22,20 +23,24 @@ class WeatherAppActivity : DaggerAppCompatActivity(), WeatherContract.View {
         setContentView(R.layout.activity_main)
         initComponents()
         presenter.takeView(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
         presenter.loadData("Limerick")
-        presenter.loadData("Recife")
-        presenter.loadData("Manaus")
+        presenter.loadData("Rio de Janeiro")
+        presenter.loadData("Beijing")
     }
 
     private fun initComponents() {
         weatherList.initGridLayout(this, adapter)
     }
 
-    override fun showProducts(section: Section) {
+    override fun showWeatherForecasts(section: Section) {
         adapter.add(section)
     }
 
     override fun showDataError() {
-        Log.e("test", "feature error.")
+        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show()
     }
 }

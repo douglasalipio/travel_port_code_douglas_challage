@@ -11,6 +11,6 @@
             android:layout_height="match_parent"
             tools:itemCount="3"
             android:useDefaultMargins="true"
-            tools:listitem="@layout/product_item" />
+            tools:listitem="@layout/weather_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

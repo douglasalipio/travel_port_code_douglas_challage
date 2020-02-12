@@ -9,7 +9,7 @@ interface WeatherContract {
 
     interface View : BaseView<Presenter> {
 
-        fun showProducts(section: Section)
+        fun showWeatherForecasts(section: Section)
         fun showDataError()
     }
 
