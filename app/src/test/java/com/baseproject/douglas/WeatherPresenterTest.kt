@@ -3,15 +3,19 @@ package com.baseproject.douglas
 import com.baseproject.douglas.feature.weather.WeatherContract
 import com.baseproject.douglas.feature.weather.WeatherInteractor
 import com.baseproject.douglas.feature.weather.WeatherPresenter
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.capture
 import com.nhaarman.mockitokotlin2.verify
 import com.xwray.groupie.Section
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import mockWeatherInfo
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.*
 
@@ -23,9 +27,8 @@ class WeatherPresenterTest {
     private lateinit var interactor: WeatherContract.Interactor
     @Captor
     private lateinit var getWeatherCallbackCaptor: ArgumentCaptor<WeatherInteractor.GetWeatherInfoCallback>
-
     private lateinit var presenter: WeatherPresenter
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+    private val testDispatcher = TestCoroutineDispatcher()
 
 
     @Before
@@ -33,37 +36,34 @@ class WeatherPresenterTest {
         MockitoAnnotations.initMocks(this)
         presenter = WeatherPresenter(interactor)
         presenter.takeView(view)
-        Dispatchers.setMain(mainThreadSurrogate)
+        Dispatchers.setMain(testDispatcher)
     }
-
 
     @After
     fun tearDown() {
-        Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
-        mainThreadSurrogate.close()
+        Dispatchers.resetMain()
+        testDispatcher.cleanupTestCoroutines()
     }
 
     @Test
     fun `should load a list of weather`() {
-        runBlocking {
+        runBlockingTest {
             launch(Dispatchers.Main) {
                 presenter.loadData("Dublin")
-                verify(interactor).requestWeather(capture(getWeatherCallbackCaptor), "Dublin")
+                verify(interactor).requestWeather(capture(getWeatherCallbackCaptor), any())
                 getWeatherCallbackCaptor.value.onWeatherInfoLoaded(mockWeatherInfo())
-                verify(view).showWeatherForecasts(Section())
+                verify(view).showWeatherForecasts(any())
             }
         }
     }
 
     @Test
     fun `should return a error`() {
-        runBlocking {
-            launch(Dispatchers.Main) {
-                presenter.loadData("Dublin")
-                verify(interactor).requestWeather(capture(getWeatherCallbackCaptor), "Dublin")
-                getWeatherCallbackCaptor.value.onDataNotAvailable("data not available.")
-                verify(view).showDataError()
-            }
+        runBlockingTest {
+            presenter.loadData("Dublin")
+            verify(interactor).requestWeather(capture(getWeatherCallbackCaptor), any())
+            getWeatherCallbackCaptor.value.onDataNotAvailable("data not available.")
+            verify(view).showDataError()
         }
     }
 }
