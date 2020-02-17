@@ -23,7 +23,6 @@ Extras
 
 - Retrofit2
 - Coroutines
-- Dagger2
 - Groupie
 - Gson
 - Espresso
